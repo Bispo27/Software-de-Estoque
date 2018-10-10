@@ -97,18 +97,17 @@ namespace View
                 var atual = MongoConnection.QueryCollection("registerin", Builders<RegistroEntrada>.Filter.Where(c => c.codigo.Equals(busca.codHVEX)), null);
                 while (k < atual.Count())
                 {
-                    ant = atual.ElementAt(k);
-                    if (atual.Count() > k + 1)
+                    if (atual.Count() > k + 1 && preco.Count > 0)
                     {
                         prox = atual.ElementAt(k + 1);
-                        if (ant.preco < prox.preco)
+                        if (preco.ElementAt(i).preco > prox.preco)
                         {
                             aux.preco = ant.preco;
                             aux.fornecedor = busca.fornecedor;
                             preco.Add(aux);
                             p = false;
                         }
-                        else if (ant.preco > prox.preco)
+                        else //if (ant.preco < preco.ElementAt(i).preco)
                         {
                             preco.Remove(aux);
                             aux.fornecedor = busca.fornecedor;
@@ -118,13 +117,21 @@ namespace View
                         }
 
                     }
-
-                    if (k == 0 && p)
+                    else
                     {
                         aux.fornecedor = busca.fornecedor;
                         aux.preco = a.ElementAt(i).Preco;
                         preco.Add(aux);
                     }
+
+                    if(k == 0 && p)
+                    {
+                        aux.fornecedor = a.ElementAt(i).responsavel;
+                        aux.preco = a.ElementAt(i).Preco;
+                        preco.Add(aux);
+                    }
+                    ant = atual.ElementAt(k);
+
                     k++;
                 }
             }
