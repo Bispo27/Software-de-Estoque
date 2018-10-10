@@ -82,6 +82,7 @@
             this.textBox5.Size = new System.Drawing.Size(161, 20);
             this.textBox5.TabIndex = 55;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
             // 
             // label6
             // 

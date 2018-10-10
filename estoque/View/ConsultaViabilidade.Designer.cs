@@ -47,6 +47,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             this.textBox6.Size = new System.Drawing.Size(161, 20);
             this.textBox6.TabIndex = 118;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label3
             // 
@@ -155,10 +157,11 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(332, 32);
+            this.Column4,
+            this.Column5});
+            this.dataGridView1.Location = new System.Drawing.Point(302, 32);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(444, 182);
+            this.dataGridView1.Size = new System.Drawing.Size(542, 220);
             this.dataGridView1.TabIndex = 128;
             // 
             // Column1
@@ -183,7 +186,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(603, 244);
+            this.button5.Location = new System.Drawing.Point(681, 276);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(163, 30);
             this.button5.TabIndex = 129;
@@ -202,11 +205,16 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Sugestão";
+            this.Column5.Name = "Column5";
+            // 
             // ConsultaViabilidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 318);
+            this.ClientSize = new System.Drawing.Size(856, 318);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
@@ -248,5 +256,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

@@ -183,6 +183,7 @@ namespace View
             this.textBox7.Size = new System.Drawing.Size(161, 20);
             this.textBox7.TabIndex = 51;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // label8
             // 
@@ -200,6 +201,7 @@ namespace View
             this.textBox8.Size = new System.Drawing.Size(161, 20);
             this.textBox8.TabIndex = 49;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox8_KeyPress);
             // 
             // label9
             // 

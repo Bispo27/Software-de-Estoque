@@ -67,16 +67,76 @@ namespace View
             }
         }
 
+        public class menor_preco
+        {
+            public double preco;
+            public string fornecedor;
+        }
+       
+
         private void button1_Click(object sender, EventArgs e)
         {
-            print_lista(lista_insumo);
+            print_lista_insumo(lista_insumo);
             cont++;
             button5.Enabled = true;
             button1.Enabled = false;
         }
+        public List<menor_preco> verifica_mais_barato(List<Estoque> a)
+        {
+            List<menor_preco> preco = new List<menor_preco>();
+            menor_preco aux = new menor_preco();
+            Estoque busca = new Estoque();
+            RegistroEntrada ant = new RegistroEntrada();
+            RegistroEntrada prox = new RegistroEntrada();
+            int k = 0;
+            bool p = true;
+            for(int i = 0; i < a.Count(); i++)
+            {
+                p = true;
+                busca = a.ElementAt(i);
+                var atual = MongoConnection.QueryCollection("registerin", Builders<RegistroEntrada>.Filter.Where(c => c.codigo.Equals(busca.codHVEX)), null);
+                while (k < atual.Count())
+                {
+                    ant = atual.ElementAt(k);
+                    if (atual.Count() > k + 1)
+                    {
+                        prox = atual.ElementAt(k + 1);
+                        if (ant.preco < prox.preco)
+                        {
+                            aux.preco = ant.preco;
+                            aux.fornecedor = busca.fornecedor;
+                            preco.Add(aux);
+                            p = false;
+                        }
+                        else if (ant.preco > prox.preco)
+                        {
+                            preco.Remove(aux);
+                            aux.fornecedor = busca.fornecedor;
+                            aux.preco = prox.preco;
+                            preco.Add(aux);
+                            p = false;
+                        }
+
+                    }
+
+                    if (k == 0 && p)
+                    {
+                        aux.fornecedor = busca.fornecedor;
+                        aux.preco = a.ElementAt(i).Preco;
+                        preco.Add(aux);
+                    }
+                    k++;
+                }
+            }
+            return preco;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            print_lista(lista_compra);
+
+
+            
+            print_lista(lista_compra, verifica_mais_barato(lista_compra));
             cont++;
 
             button2.Enabled = false;
@@ -240,7 +300,63 @@ namespace View
 
         }
 
-        public void print_lista(List<Estoque> lista)
+        public void print_lista(List<Estoque> lista, List<menor_preco> menor_preco)
+        {
+            int MAX = lista.Count();
+            Estoque aux = new Estoque();
+            if (flag)
+            {
+                for (int i = 0; i < MAX; i++)
+                {
+                    aux = lista.ElementAt(i);
+                    DataGridViewRow item = new DataGridViewRow();
+                    item.CreateCells(dataGridView1);
+                    dataGridView1.Rows.Add(item);
+
+                    dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
+                    dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
+
+                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
+                    dataGridView1.Rows[i].Cells[1].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[2].Value = menor_preco.ElementAt(i).preco;
+                    dataGridView1.Rows[i].Cells[2].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
+                    dataGridView1.Rows[i].Cells[3].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[4].Value = menor_preco.ElementAt(i).fornecedor;
+                    dataGridView1.Rows[i].Cells[4].ReadOnly = true;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < MAX; i++)
+                {
+                    aux = lista.ElementAt(i);
+                    DataGridViewRow item = new DataGridViewRow();
+                    item.CreateCells(dataGridView1);
+                    dataGridView1.Rows.Add(item);
+
+                    dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
+                    dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
+
+                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
+                    dataGridView1.Rows[i].Cells[1].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[2].Value = menor_preco.ElementAt(i).preco;
+                    dataGridView1.Rows[i].Cells[2].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
+                    dataGridView1.Rows[i].Cells[3].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[4].Value = menor_preco.ElementAt(i).fornecedor;
+                    dataGridView1.Rows[i].Cells[4].ReadOnly = true;
+                }
+            }
+            
+        }
+        public void print_lista_insumo(List<Estoque> lista)
         {
             int MAX = lista.Count();
             Estoque aux = new Estoque();
@@ -288,10 +404,10 @@ namespace View
                     dataGridView1.Rows[i].Cells[3].ReadOnly = true;
                 }
             }
-            
+
         }
 
-        
+
         bool verifica_item(Estoque verifica, int i)
         {
             
@@ -346,6 +462,7 @@ namespace View
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
+            
             textBox6.CharacterCasing = CharacterCasing.Upper;
         }
 
@@ -354,6 +471,14 @@ namespace View
             MenuEstoque menu = new MenuEstoque();
             menu.Show();
             this.Visible = false;
+        }
+
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
     }
 

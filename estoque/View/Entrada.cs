@@ -68,6 +68,7 @@ namespace View
                 r.codigo = atualiza.codHVEX;
                 r.quantidade = int.Parse(textBox5.Text);
                 r.responsavel = comboBox1.Text;
+                r.preco = double.Parse(textBox6.Text);
 
                 if (MongoConnection.InsertOne("registerin", r) && MongoConnection.ReplaceOne("Estoques", filt, atualiza))
                 {
@@ -156,6 +157,14 @@ namespace View
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
