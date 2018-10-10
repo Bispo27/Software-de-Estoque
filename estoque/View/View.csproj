@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{381C9528-52D8-4835-8FAF-51B3F85DBE6B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>View</RootNamespace>
+    <AssemblyName>View</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DnsClient, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.2.0\lib\net45\DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.7.0\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.7.0\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.7.0\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CadastrarItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastrarItem.Designer.cs">
+      <DependentUpon>CadastrarItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastrar_Item_Personalizado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastrar_Item_Personalizado.Designer.cs">
+      <DependentUpon>Cadastrar_Item_Personalizado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastrar_proposta_no_controle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastrar_proposta_no_controle.Designer.cs">
+      <DependentUpon>Cadastrar_proposta_no_controle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Faturamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Faturamento.Designer.cs">
+      <DependentUpon>Faturamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cobrança_de_propostas_em_aberto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cobrança_de_propostas_em_aberto.Designer.cs">
+      <DependentUpon>Cobrança_de_propostas_em_aberto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaViabilidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaViabilidade.Designer.cs">
+      <DependentUpon>ConsultaViabilidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entrada.Designer.cs">
+      <DependentUpon>Entrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta_Propostas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta_Propostas.Designer.cs">
+      <DependentUpon>Consulta_Propostas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gráficos_Vendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gráficos_Vendas.Designer.cs">
+      <DependentUpon>Gráficos_Vendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Investimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Investimento.Designer.cs">
+      <DependentUpon>Investimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuEstoque.Designer.cs">
+      <DependentUpon>MenuEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menuVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menuVendas.Designer.cs">
+      <DependentUpon>menuVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="novaProposta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="novaProposta.Designer.cs">
+      <DependentUpon>novaProposta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisa.Designer.cs">
+      <DependentUpon>Pesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoAcabado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoAcabado.Designer.cs">
+      <DependentUpon>ProdutoAcabado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorio.Designer.cs">
+      <DependentUpon>Relatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Saida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Saida.Designer.cs">
+      <DependentUpon>Saida.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CadastrarItem.resx">
+      <DependentUpon>CadastrarItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastrar_proposta_no_controle.resx">
+      <DependentUpon>Cadastrar_proposta_no_controle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Faturamento.resx">
+      <DependentUpon>Faturamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cobrança_de_propostas_em_aberto.resx">
+      <DependentUpon>Cobrança_de_propostas_em_aberto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaViabilidade.resx">
+      <DependentUpon>ConsultaViabilidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta_Propostas.resx">
+      <DependentUpon>Consulta_Propostas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entrada.resx">
+      <DependentUpon>Entrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gráficos_Vendas.resx">
+      <DependentUpon>Gráficos_Vendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Investimento.resx">
+      <DependentUpon>Investimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuEstoque.resx">
+      <DependentUpon>MenuEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menuVendas.resx">
+      <DependentUpon>menuVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="novaProposta.resx">
+      <DependentUpon>novaProposta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisa.resx">
+      <DependentUpon>Pesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoAcabado.resx">
+      <DependentUpon>ProdutoAcabado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Relatorio.resx">
+      <DependentUpon>Relatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Saida.resx">
+      <DependentUpon>Saida.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{8027CA29-CCD4-42B8-99D6-5DD25636135F}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{3A1CE291-2CA5-40E1-8354-40CB25FE78F5}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
