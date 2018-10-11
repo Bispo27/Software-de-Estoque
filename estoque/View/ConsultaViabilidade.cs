@@ -91,7 +91,8 @@ namespace View
             
             for (int i = 0; i < a.Count(); i++)
             {
-                aux = MongoConnection.QueryCollection("registerin", Builders<RegistroEntrada>.Filter.Where(c => c.codigo.Equals(a.ElementAt(i).codHVEX)), null);
+                string Buscar = a.ElementAt(i).codHVEX;
+                aux = MongoConnection.QueryCollection("registerin", Builders<RegistroEntrada>.Filter.Where(c => c.codigo.Contains(Buscar)), null);
                 if(aux.Count() > 0)
                 {
                     aux_2 = aux.First();
@@ -106,11 +107,7 @@ namespace View
                     menorpreco_aux.preco = aux_2.preco;
                     list_preco.Add(menorpreco_aux);
                 }
-                else
-                {
-                    List<menor_preco> bla = new List<menor_preco>();
-                    return bla;
-                }
+                
             }
             return list_preco;
         }
