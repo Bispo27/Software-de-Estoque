@@ -96,15 +96,21 @@ namespace View
                 if(aux.Count() > 0)
                 {
                     aux_2 = aux.First();
-                    for (int k = 0; k < a.Count(); k++)
+                    for (int k = 0; k < aux.Count(); k++)
                     {
-                        if (aux_2.preco > aux.ElementAt(i).preco)
+                        if (aux_2.preco > aux.ElementAt(k).preco)
                         {
-                            aux_2 = aux.ElementAt(i);
+                            aux_2 = aux.ElementAt(k);
                         }
                     }
                     menorpreco_aux.fornecedor = aux_2.fornecedor;
                     menorpreco_aux.preco = aux_2.preco;
+                    list_preco.Add(menorpreco_aux);
+                }
+                else
+                {
+                    menorpreco_aux.fornecedor = a.ElementAt(i).fornecedor;
+                    menorpreco_aux.preco = a.ElementAt(i).Preco;
                     list_preco.Add(menorpreco_aux);
                 }
                 
