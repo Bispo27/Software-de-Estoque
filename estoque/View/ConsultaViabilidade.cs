@@ -1,17 +1,21 @@
 ﻿using Database;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Model;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+
 
 namespace View
 {
 
     public partial class ConsultaViabilidade : Form
     {
-       
+        int quant_lista = 0;
        // List<int> quantidade = new List<int>();
         public Estoque Global;
         public produtoHVEX lista;
@@ -26,7 +30,7 @@ namespace View
             button2.Visible = false;
             button1.Visible = false;
             button5.Enabled = false;
-
+            button6.Visible = false;
         }
 
         public void gerarprodutoHVEX()
@@ -84,7 +88,7 @@ namespace View
         public List<menor_preco> verifica_mais_barato(List<Estoque> a)
         {
             List<menor_preco> list_preco = new List<menor_preco>();
-            menor_preco menorpreco_aux = new menor_preco();
+            
             Estoque busca = new Estoque();
             List<RegistroEntrada> aux = new List<RegistroEntrada>();
             RegistroEntrada aux_2 = new RegistroEntrada();
@@ -103,12 +107,15 @@ namespace View
                             aux_2 = aux.ElementAt(k);
                         }
                     }
+                    menor_preco menorpreco_aux = new menor_preco();
                     menorpreco_aux.fornecedor = aux_2.fornecedor;
                     menorpreco_aux.preco = aux_2.preco;
                     list_preco.Add(menorpreco_aux);
+                    
                 }
                 else
                 {
+                    menor_preco menorpreco_aux = new menor_preco();
                     menorpreco_aux.fornecedor = a.ElementAt(i).fornecedor;
                     menorpreco_aux.preco = a.ElementAt(i).Preco;
                     list_preco.Add(menorpreco_aux);
@@ -120,7 +127,7 @@ namespace View
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            button6.Visible = true;
 
             if(verifica_mais_barato(lista_compra).Count() > 0)
             {
@@ -297,6 +304,7 @@ namespace View
 
         public void print_lista(List<Estoque> lista, List<menor_preco> menor_preco)
         {
+            quant_lista = 0;
             int MAX = lista.Count();
             Estoque aux = new Estoque();
             if (flag)
@@ -322,6 +330,7 @@ namespace View
 
                     dataGridView1.Rows[i].Cells[4].Value = menor_preco.ElementAt(i).fornecedor;
                     dataGridView1.Rows[i].Cells[4].ReadOnly = true;
+                    quant_lista++;
                 }
             }
             else
@@ -347,12 +356,14 @@ namespace View
 
                     dataGridView1.Rows[i].Cells[4].Value = menor_preco.ElementAt(i).fornecedor;
                     dataGridView1.Rows[i].Cells[4].ReadOnly = true;
+                    quant_lista++;
                 }
             }
             
         }
         public void print_lista_insumo(List<Estoque> lista)
         {
+            quant_lista = 0;
             int MAX = lista.Count();
             Estoque aux = new Estoque();
             if (flag)
@@ -375,6 +386,7 @@ namespace View
 
                     dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
                     dataGridView1.Rows[i].Cells[3].ReadOnly = true;
+                    quant_lista++;
                 }
             }
             else
@@ -397,6 +409,7 @@ namespace View
 
                     dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
                     dataGridView1.Rows[i].Cells[3].ReadOnly = true;
+                    quant_lista++;
                 }
             }
 
@@ -475,8 +488,69 @@ namespace View
                 e.Handled = true;
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            PDF novo = new PDF();
+            Document doc = novo.novo_arquivo(textBox5.Text);
+            List<string> produto = new List<string>();
+
+            
+
+            PdfPTable table = new PdfPTable(dataGridView1.Columns.Count);
+
+            for (int j = 0; j < dataGridView1.Columns.Count; j++)
+            {
+                table.AddCell(new Phrase(dataGridView1.Columns[j].HeaderText));
+            }
+
+            table.HeaderRows = 1;
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                for (int k = 0; k < dataGridView1.Columns.Count; k++)
+                {
+                    if (dataGridView1[k, i].Value != null)
+                    {
+                        string escreve = dataGridView1[k, i].Value.ToString(); 
+                        if (k == 2) escreve = string.Concat("R$", dataGridView1[k, i].Value.ToString());
+                        
+                        table.AddCell(new Phrase(escreve));
+                    }
+                }
+            }
+            doc.Open(); // abre o arquivo
+            string dados = "\n\n\n\n\n\n\n\n\n";
+            novo.escreve(doc, dados);           
+            doc.Add(table); // escreve a tabela
+            doc.Close(); // fecha o arquivo
+
+            MessageBox.Show("Arquivo criado na pasta: PDF");
+            DialogResult = DialogResult.Yes;
+
+
+        }
+
+        
     }
 
 
     
 }
+
+/*
+ 
+                    dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
+                    dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
+
+                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
+                    dataGridView1.Rows[i].Cells[1].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[2].Value = aux.Preco;
+                    dataGridView1.Rows[i].Cells[2].ReadOnly = true;
+
+                    dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
+                    dataGridView1.Rows[i].Cells[3].ReadOnly = true;
+
+
+ * */
