@@ -16,5 +16,6 @@ namespace Model
         public int quantidade { get; set; }
         public double preco { get; set; }
         public string responsavel { get; set; }
+        public string fornecedor { get; set; }
     }
 }

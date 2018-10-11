@@ -83,68 +83,53 @@ namespace View
         }
         public List<menor_preco> verifica_mais_barato(List<Estoque> a)
         {
-            List<menor_preco> preco = new List<menor_preco>();
-            menor_preco aux = new menor_preco();
+            List<menor_preco> list_preco = new List<menor_preco>();
+            menor_preco menorpreco_aux = new menor_preco();
             Estoque busca = new Estoque();
-            RegistroEntrada ant = new RegistroEntrada();
-            RegistroEntrada prox = new RegistroEntrada();
-            int k = 0;
-            bool p = true;
-            for(int i = 0; i < a.Count(); i++)
+            List<RegistroEntrada> aux = new List<RegistroEntrada>();
+            RegistroEntrada aux_2 = new RegistroEntrada();
+            
+            for (int i = 0; i < a.Count(); i++)
             {
-                p = true;
-                busca = a.ElementAt(i);
-                var atual = MongoConnection.QueryCollection("registerin", Builders<RegistroEntrada>.Filter.Where(c => c.codigo.Equals(busca.codHVEX)), null);
-                while (k < atual.Count())
+                aux = MongoConnection.QueryCollection("registerin", Builders<RegistroEntrada>.Filter.Where(c => c.codigo.Equals(a.ElementAt(i).codHVEX)), null);
+                if(aux.Count() > 0)
                 {
-                    if (atual.Count() > k + 1 && preco.Count > 0)
+                    aux_2 = aux.First();
+                    for (int k = 0; k < a.Count(); k++)
                     {
-                        prox = atual.ElementAt(k + 1);
-                        if (preco.ElementAt(i).preco > prox.preco)
+                        if (aux_2.preco > aux.ElementAt(i).preco)
                         {
-                            aux.preco = ant.preco;
-                            aux.fornecedor = busca.fornecedor;
-                            preco.Add(aux);
-                            p = false;
+                            aux_2 = aux.ElementAt(i);
                         }
-                        else //if (ant.preco < preco.ElementAt(i).preco)
-                        {
-                            preco.Remove(aux);
-                            aux.fornecedor = busca.fornecedor;
-                            aux.preco = prox.preco;
-                            preco.Add(aux);
-                            p = false;
-                        }
-
                     }
-                    else
-                    {
-                        aux.fornecedor = busca.fornecedor;
-                        aux.preco = a.ElementAt(i).Preco;
-                        preco.Add(aux);
-                    }
-
-                    if(k == 0 && p)
-                    {
-                        aux.fornecedor = a.ElementAt(i).responsavel;
-                        aux.preco = a.ElementAt(i).Preco;
-                        preco.Add(aux);
-                    }
-                    ant = atual.ElementAt(k);
-
-                    k++;
+                    menorpreco_aux.fornecedor = aux_2.fornecedor;
+                    menorpreco_aux.preco = aux_2.preco;
+                    list_preco.Add(menorpreco_aux);
+                }
+                else
+                {
+                    List<menor_preco> bla = new List<menor_preco>();
+                    return bla;
                 }
             }
-            return preco;
+            return list_preco;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
 
+            if(verifica_mais_barato(lista_compra).Count() > 0)
+            {
+                print_lista(lista_compra, verifica_mais_barato(lista_compra));
+                cont++;
+            }
+            else
+            {
+                MessageBox.Show("ERRO! UM DOS INSUMOS DESTE ITEM NÃO ESTÁ CADASTRADO NO BANCO DE DADOS!!");
+                DialogResult = DialogResult.Yes;
+            }
             
-            print_lista(lista_compra, verifica_mais_barato(lista_compra));
-            cont++;
 
             button2.Enabled = false;
         }

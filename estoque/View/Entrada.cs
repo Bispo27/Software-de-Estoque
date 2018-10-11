@@ -24,40 +24,56 @@ namespace View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool validData = true;
+
+
+
+            bool validData = true, control = true;
             CollectionEstoque Lista = new CollectionEstoque();
 
-            var filt = Builders<Estoque>.Filter.Where(c => c.codHVEX.Equals(flag));
-            if (textBox1.Text.Length > 0)
+            if (textBox4.Text.Length == 0 && textBox5.Text.Length == 0 && textBox6.Text.Length == 0 && textBox7.Text.Length == 0 && comboBox1.Text.Length == 0)
             {
-                flag = textBox1.Text;
-                filt = Builders<Estoque>.Filter.Where(c => c.codHVEX.Contains(flag));
-                Lista.AddRange(MongoConnection.QueryCollection("Estoques", filt, null));
-            }
-            if (textBox2.Text.Length > 0)
-            {
-                flag = textBox2.Text;
-                filt = Builders<Estoque>.Filter.Where(c => c.produto.Contains(flag));
-                Lista.AddRange(MongoConnection.QueryCollection("Estoques", filt, null));
-            }
-            if (textBox3.Text.Length > 0)
-            {
-                flag = textBox3.Text;
-                filt = Builders<Estoque>.Filter.Where(c => c.descricao.Contains(flag));
-                Lista.AddRange(MongoConnection.QueryCollection("Estoques", filt, null));
-            }
+                control = false;
+                validData = false;
+                MessageBox.Show("PREENCHA TODOS OS CAMPOS");
+                DialogResult = DialogResult.Yes;
 
-
-
+            }
             Estoque atualiza = new Estoque();
-            int a = int.Parse(textBox5.Text);
-            int b = Lista.First().quantidade;
-            var soma = a + b;
-            if (soma != 0)
+            var filt = Builders<Estoque>.Filter.Where(c => c.codHVEX.Equals(flag));
+            if (control)
             {
-                validData = true;
-                atualiza = Lista.First();
-                atualiza.quantidade = soma;
+                
+                if (textBox1.Text.Length > 0)
+                {
+                    flag = textBox1.Text;
+                    filt = Builders<Estoque>.Filter.Where(c => c.codHVEX.Contains(flag));
+                    Lista.AddRange(MongoConnection.QueryCollection("Estoques", filt, null));
+                }
+                if (textBox2.Text.Length > 0)
+                {
+                    flag = textBox2.Text;
+                    filt = Builders<Estoque>.Filter.Where(c => c.produto.Contains(flag));
+                    Lista.AddRange(MongoConnection.QueryCollection("Estoques", filt, null));
+                }
+                if (textBox3.Text.Length > 0)
+                {
+                    flag = textBox3.Text;
+                    filt = Builders<Estoque>.Filter.Where(c => c.descricao.Contains(flag));
+                    Lista.AddRange(MongoConnection.QueryCollection("Estoques", filt, null));
+                }
+
+            
+            
+                
+                int a = int.Parse(textBox5.Text);
+                int b = Lista.First().quantidade;
+                var soma = a + b;
+                if (soma != 0)
+                {
+                    validData = true;
+                    atualiza = Lista.First();
+                    atualiza.quantidade = soma;
+                }
             }
             
             if (validData)
@@ -69,6 +85,7 @@ namespace View
                 r.quantidade = int.Parse(textBox5.Text);
                 r.responsavel = comboBox1.Text;
                 r.preco = double.Parse(textBox6.Text);
+                r.fornecedor = textBox7.Text;
 
                 if (MongoConnection.InsertOne("registerin", r) && MongoConnection.ReplaceOne("Estoques", filt, atualiza))
                 {
@@ -165,6 +182,11 @@ namespace View
             {
                 e.Handled = true;
             }
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            textBox7.CharacterCasing = CharacterCasing.Upper;
         }
     }
 }
