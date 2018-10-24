@@ -26,6 +26,8 @@ namespace View
         public ConsultaViabilidade()
         {
             InitializeComponent();
+            MaximizeBox = false; this.MinimizeBox = false;
+
             button2.Visible = false;
             button1.Visible = false;
             button5.Enabled = false;
@@ -212,89 +214,98 @@ namespace View
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            bool control = true;
             if(cont > 0)
             {
                 MenuEstoque menu = new MenuEstoque();
                 menu.Show();
                 this.Visible = false;
             }
-
-            if (cont < 1)
+            if ((textBox5.Text.Length == 0 || textBox1.Text.Length == 0 || textBox3.Text.Length == 0 ) && textBox6.Text.Length == 0)
             {
-                List<Estoque> lista_aux = new List<Estoque>();
-                gerarprodutoHVEX();
-
-                button2.Visible = true;
-                button1.Visible = true;
-
-               
-                Estoque aux = new Estoque();
-                int MAX = 0;
-
-                if (lista != null)
+                control = false;
+                MessageBox.Show("Preencha todos os campos");
+                DialogResult = DialogResult.Yes;
+            }
+            if (control)
+            {
+                if (cont < 1)
                 {
-                    lista_aux = lista.ProductCollection;
+                    List<Estoque> lista_aux = new List<Estoque>();
+                    gerarprodutoHVEX();
 
-                    MAX = lista_aux.Count();
+                    button2.Visible = true;
+                    button1.Visible = true;
 
-                    for (int i = 0; i < MAX; i++)
+
+                    Estoque aux = new Estoque();
+                    int MAX = 0;
+
+                    if (lista != null)
                     {
+                        lista_aux = lista.ProductCollection;
 
-                        aux = lista_aux.ElementAt(i);
-                        int a, b;
-                        //cont = aux.quantidade - lista.ProductCollection.ElementAt(i).quantidade * int.Parse(textBox6.Text);
-                        if (verifica_item(aux, i))
-                        {
-                            lista_insumo.Add(aux);
-                        }
-                        else
-                        {
-                            flag = true;
-                            lista_compra.Add(aux);
-                            b = aux.quantidade * int.Parse(textBox6.Text);
+                        MAX = lista_aux.Count();
 
-                            
-                            var busca = MongoConnection.QueryCollection("Estoques", Builders<Estoque>.Filter.Where(c => c.codHVEX.Equals(lista_compra.ElementAt(cont).codHVEX)), null);
-                            a = busca.First().quantidade - b;
-                            if (a < 0)
+                        for (int i = 0; i < MAX; i++)
+                        {
+
+                            aux = lista_aux.ElementAt(i);
+                            int a, b;
+                            //cont = aux.quantidade - lista.ProductCollection.ElementAt(i).quantidade * int.Parse(textBox6.Text);
+                            if (verifica_item(aux, i))
                             {
-                                lista_compra.ElementAt(cont).quantidade = a * (-1);
-                                aux.quantidade = a * (-1);
-
+                                lista_insumo.Add(aux);
                             }
                             else
                             {
-                                lista_compra.ElementAt(cont).quantidade = a;
-                                aux.quantidade = a;
+                                flag = true;
+                                lista_compra.Add(aux);
+                                b = aux.quantidade * int.Parse(textBox6.Text);
+
+
+                                var busca = MongoConnection.QueryCollection("Estoques", Builders<Estoque>.Filter.Where(c => c.codHVEX.Equals(lista_compra.ElementAt(cont).codHVEX)), null);
+                                a = busca.First().quantidade - b;
+                                if (a < 0)
+                                {
+                                    lista_compra.ElementAt(cont).quantidade = a * (-1);
+                                    aux.quantidade = a * (-1);
+
+                                }
+                                else
+                                {
+                                    lista_compra.ElementAt(cont).quantidade = a;
+                                    aux.quantidade = a;
+                                }
+
+
+                                cont++;
                             }
-                            
-
-                            cont++;
                         }
-                    }
-                    if (flag)
-                    {
+                        if (flag)
+                        {
 
 
-                        // print_lista(lista_compra);
-                        button1.Enabled = false;
-                        button2.Enabled = true;
+                            // print_lista(lista_compra);
+                            button1.Enabled = false;
+                            button2.Enabled = true;
+                        }
+                        else
+                        {
+                            //   print_lista(lista_insumo);
+                            button1.Enabled = true;
+                            button2.Enabled = false;
+                        }
                     }
                     else
                     {
-                        //   print_lista(lista_insumo);
-                        button1.Enabled = true;
+                        button1.Enabled = false;
                         button2.Enabled = false;
+                        MessageBox.Show("Este Item não está cadastrado");
+                        DialogResult = DialogResult.Yes;
                     }
-                }
-                else
-                {
-                    button1.Enabled = false;
-                    button2.Enabled = false;
-                    MessageBox.Show("Este Item não está cadastrado");
-                    DialogResult = DialogResult.Yes;
-                }
 
+                }
             }
 
 
@@ -493,9 +504,6 @@ namespace View
             PDF novo = new PDF();
             Document doc = novo.novo_arquivo(textBox5.Text);
             List<string> produto = new List<string>();
-           // Phrase ph1 = new Phrase("\n\n\nAO\n", new RtfFont("Arial", 10));
-
-
             PdfPTable table = new PdfPTable(dataGridView1.Columns.Count);
 
           
@@ -525,11 +533,11 @@ namespace View
             
             string dados = "\n\n";
             novo.escreve(doc, dados);
-            doc.AddTitle("Hello World example\n");
+           // doc.AddTitle("Hello World example\n");
             doc.Add(table); // escreve a tabela
             doc.Close(); // fecha o arquivo
 
-            MessageBox.Show("Arquivo criado na pasta: PDF");
+            MessageBox.Show("Arquivo criado na área de trabalho");
             DialogResult = DialogResult.Yes;
 
         }

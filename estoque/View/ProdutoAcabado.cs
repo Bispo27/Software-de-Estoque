@@ -25,6 +25,7 @@ namespace View
         {
             InitializeComponent();
             inicializacao();
+            MaximizeBox = false; this.MinimizeBox = false;
         }
         public void inicializacao()
         {

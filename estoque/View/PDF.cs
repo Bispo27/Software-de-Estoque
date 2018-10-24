@@ -17,7 +17,7 @@ namespace View
             Document doc = new Document(PageSize.A4);
             doc.SetMargins(40, 40, 40, 80);
             doc.AddCreationDate();
-            string caminho = @"C:\Users\anaca\Desktop\PDF\" + "RELATORIO DE COMPRAS _ " + dados + ".pdf"; ;
+            string caminho = @"C:\Users\anaca\Desktop\" + "RELATORIO DE COMPRAS _ " + dados + ".pdf"; ;
             
             var writer = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
 

@@ -21,6 +21,7 @@ namespace View
         public Relatorio()
         {
             InitializeComponent();
+            MaximizeBox = false; this.MinimizeBox = false;
 
         }
 

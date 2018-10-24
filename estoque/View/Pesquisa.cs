@@ -17,6 +17,8 @@ namespace View
         public Pesquisa()
         {
             InitializeComponent();
+            MaximizeBox = false; this.MinimizeBox = false;
+
             dataGridView1.ReadOnly = true;
         }
         public void clean()

@@ -18,6 +18,8 @@ namespace View
         public CadastrarItem()
         {
             InitializeComponent();
+            MaximizeBox = false; this.MinimizeBox = false;
+
             comboBox1.SelectedIndex = 0;
         }
 
