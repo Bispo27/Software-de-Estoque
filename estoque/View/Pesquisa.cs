@@ -208,8 +208,8 @@ namespace View
 
                 dataGridView1.Rows[i].Cells[3].Value = resultado.setor;
                 dataGridView1.Rows[i].Cells[3].ReadOnly = true;
-                
-                dataGridView1.Rows[i].Cells[6].Value = resultado.quantidade;
+
+                dataGridView1.Rows[i].Cells[6].Value = Convert.ToString(resultado.quantidade);
                 dataGridView1.Rows[i].Cells[6].ReadOnly = true;
 
                 dataGridView1.Rows[i].Cells[7].Value = string.Concat("R$",resultado.preco);
@@ -245,8 +245,8 @@ namespace View
                 dataGridView1.Rows[MAX].Cells[5].Value = resultado.fornecedor;
                 dataGridView1.Rows[MAX].Cells[5].ReadOnly = true;
 
-                dataGridView1.Rows[MAX].Cells[6].Value = resultado.quantidade;
-                dataGridView1.Rows[MAX].Cells[6].ReadOnly = true;
+                dataGridView1.Rows[MAX].Cells[6].Value = Convert.ToString(resultado.quantidade);
+            dataGridView1.Rows[MAX].Cells[6].ReadOnly = true;
 
                 dataGridView1.Rows[MAX].Cells[7].Value = string.Concat("R$",resultado.Preco);
                 dataGridView1.Rows[MAX].Cells[7].ReadOnly = true;

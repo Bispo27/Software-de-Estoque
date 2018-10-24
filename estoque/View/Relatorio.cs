@@ -111,7 +111,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[1].Value = a.nome;
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = produto.ElementAt(i).quantidade;
+                    dataGridView1.Rows[i].Cells[2].Value = Convert.ToString(produto.ElementAt(i).quantidade);
                     dataGridView1.Rows[i].Cells[2].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[3].Value = produto.ElementAt(i).responsavel;
@@ -166,7 +166,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[1].Value = a.produto;
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = produto.ElementAt(i).quantidade;
+                    dataGridView1.Rows[i].Cells[2].Value = Convert.ToString(produto.ElementAt(i).quantidade);
                     dataGridView1.Rows[i].Cells[2].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[3].Value = produto.ElementAt(i).responsavel;
@@ -212,7 +212,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[1].Value = a.produto;
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = produto.ElementAt(i).quantidade;
+                    dataGridView1.Rows[i].Cells[2].Value = Convert.ToString(produto.ElementAt(i).quantidade);
                     dataGridView1.Rows[i].Cells[2].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[3].Value = produto.ElementAt(i).responsavel;

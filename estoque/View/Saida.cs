@@ -20,7 +20,9 @@ namespace View
         public Saida()
         {
             InitializeComponent();
-            MaximizeBox = false; this.MinimizeBox = false;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            
 
 
         }
@@ -96,8 +98,8 @@ namespace View
                             r.responsavel = comboBox1.Text;
 
                             if (MongoConnection.InsertOne("registerout", r) && MongoConnection.ReplaceOne("Estoques", filt, atualiza))
-                            {
-                                MessageBox.Show("Deu certo!");
+                            { 
+                                MessageBox.Show("PRODUTO RETIRADO COM SUCESSO");
                                 DialogResult = DialogResult.Yes;
                             }
                         }
@@ -156,7 +158,7 @@ namespace View
 
                             if (MongoConnection.InsertOne("registerout", r) && MongoConnection.ReplaceOne("produtohvex", Filt, Atualiza))
                             {
-                                MessageBox.Show("Deu certo!");
+                                MessageBox.Show("PRODUTO RETIRADO COM SUCESSO");
                                 DialogResult = DialogResult.Yes;
                             }
                         }

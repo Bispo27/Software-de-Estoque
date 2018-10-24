@@ -329,7 +329,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
                     dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
 
-                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
+                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[2].Value = menor_preco.ElementAt(i).preco;
@@ -355,7 +355,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
                     dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
 
-                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
+                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[2].Value = menor_preco.ElementAt(i).preco;
@@ -388,7 +388,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
                     dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
 
-                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
+                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[2].Value = aux.Preco;
@@ -411,7 +411,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
                     dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
 
-                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
+                    dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[2].Value = aux.Preco;
@@ -541,27 +541,5 @@ namespace View
             DialogResult = DialogResult.Yes;
 
         }
-
-        
     }
-
-
-    
 }
-
-/*
- 
-                    dataGridView1.Rows[i].Cells[0].Value = aux.produto; // Seta os valores da célula
-                    dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la
-
-                    dataGridView1.Rows[i].Cells[1].Value = aux.quantidade;
-                    dataGridView1.Rows[i].Cells[1].ReadOnly = true;
-
-                    dataGridView1.Rows[i].Cells[2].Value = aux.Preco;
-                    dataGridView1.Rows[i].Cells[2].ReadOnly = true;
-
-                    dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
-                    dataGridView1.Rows[i].Cells[3].ReadOnly = true;
-
-
- * */

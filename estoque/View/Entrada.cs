@@ -90,7 +90,7 @@ namespace View
 
                 if (MongoConnection.InsertOne("registerin", r) && MongoConnection.ReplaceOne("Estoques", filt, atualiza))
                 {
-                    MessageBox.Show("Deu certo!");
+                    MessageBox.Show("PRODUTO INSERIDO COM SUCESSO");
                     DialogResult = DialogResult.Yes;
                 }
             }
