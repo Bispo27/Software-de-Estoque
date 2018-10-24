@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{8027CA29-CCD4-42B8-99D6-5DD25636135F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{381C9528-52D8-4835-8FAF-51B3F85DBE6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HVEX - ESTOQUE", "View\HVEX - ESTOQUE.csproj", "{381C9528-52D8-4835-8FAF-51B3F85DBE6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

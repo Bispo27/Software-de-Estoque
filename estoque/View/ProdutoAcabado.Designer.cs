@@ -160,7 +160,7 @@
             this.groupBox1.Size = new System.Drawing.Size(268, 235);
             this.groupBox1.TabIndex = 110;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Adicionar Produto";
+            this.groupBox1.Text = "CRIAR NOVO ITEM";
             // 
             // groupBox2
             // 
@@ -175,7 +175,7 @@
             this.groupBox2.Size = new System.Drawing.Size(272, 137);
             this.groupBox2.TabIndex = 117;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Pesquisa";
+            this.groupBox2.Text = "PESQUISA";
             // 
             // label6
             // 
@@ -296,6 +296,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(747, 331);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox2);
@@ -307,6 +308,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProdutoAcabado";
             this.Text = "Produto acabado";
             this.groupBox1.ResumeLayout(false);

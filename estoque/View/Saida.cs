@@ -27,7 +27,7 @@ namespace View
         private void button1_Click(object sender, EventArgs e)
         {
             bool botao = false;
-            if (((comboBox1.Text.Length > 0) && (textBox5.Text.Length > 0) && (textBox4.Text.Length > 0)) && (textBox1.Text.Length > 0 || textBox2.Text.Length > 0 || textBox3.Text.Length > 0))
+            if (((comboBox1.Text.Length > 0) && (textBox5.Text.Length > 0) && (textBox4.Text.Length > 0)) && (textBox1.Text.Length > 0 || textBox2.Text.Length > 0 || textBox3.Text.Length > 0) && int.Parse(textBox5.Text) > 0)
             {
                 botao = true;
             }

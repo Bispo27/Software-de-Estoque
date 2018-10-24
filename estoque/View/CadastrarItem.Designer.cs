@@ -179,6 +179,7 @@ namespace View
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(117, 348);
+            this.textBox7.MaxLength = 10;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(161, 20);
             this.textBox7.TabIndex = 51;
@@ -429,6 +430,7 @@ namespace View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(692, 450);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox4);
@@ -436,6 +438,7 @@ namespace View
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastrarItem";
             this.Text = "Cadastrar Item";
             this.groupBox1.ResumeLayout(false);

@@ -5,7 +5,6 @@ using Model;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -414,7 +413,7 @@ namespace View
             }
 
         }
-
+        
 
         bool verifica_item(Estoque verifica, int i)
         {
@@ -494,10 +493,13 @@ namespace View
             PDF novo = new PDF();
             Document doc = novo.novo_arquivo(textBox5.Text);
             List<string> produto = new List<string>();
+           // Phrase ph1 = new Phrase("\n\n\nAO\n", new RtfFont("Arial", 10));
 
-            
 
             PdfPTable table = new PdfPTable(dataGridView1.Columns.Count);
+
+          
+
 
             for (int j = 0; j < dataGridView1.Columns.Count; j++)
             {
@@ -513,21 +515,22 @@ namespace View
                     if (dataGridView1[k, i].Value != null)
                     {
                         string escreve = dataGridView1[k, i].Value.ToString(); 
-                        if (k == 2) escreve = string.Concat("R$", dataGridView1[k, i].Value.ToString());
+                        if (k == 2) escreve = string.Concat("R$ ", dataGridView1[k, i].Value.ToString());
                         
                         table.AddCell(new Phrase(escreve));
                     }
                 }
             }
             doc.Open(); // abre o arquivo
-            string dados = "\n\n\n\n\n\n\n\n\n";
-            novo.escreve(doc, dados);           
+            
+            string dados = "\n\n";
+            novo.escreve(doc, dados);
+            doc.AddTitle("Hello World example\n");
             doc.Add(table); // escreve a tabela
             doc.Close(); // fecha o arquivo
 
             MessageBox.Show("Arquivo criado na pasta: PDF");
             DialogResult = DialogResult.Yes;
-
 
         }
 

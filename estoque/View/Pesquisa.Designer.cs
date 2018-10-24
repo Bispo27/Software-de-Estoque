@@ -28,6 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pesquisa));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,8 +59,8 @@
             this.Code_HVEX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -144,51 +154,71 @@
             // 
             // Tipo
             // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Tipo.DefaultCellStyle = dataGridViewCellStyle11;
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
             // 
             // Produto
             // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Produto.DefaultCellStyle = dataGridViewCellStyle12;
             this.Produto.HeaderText = "Produto";
             this.Produto.Name = "Produto";
             // 
             // Descrição
             // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Descrição.DefaultCellStyle = dataGridViewCellStyle13;
             this.Descrição.HeaderText = "Descrição";
             this.Descrição.Name = "Descrição";
             // 
             // Setor
             // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Setor.DefaultCellStyle = dataGridViewCellStyle14;
             this.Setor.HeaderText = "Setor";
             this.Setor.Name = "Setor";
             // 
             // Fabricante
             // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Fabricante.DefaultCellStyle = dataGridViewCellStyle15;
             this.Fabricante.HeaderText = "Fabricante";
             this.Fabricante.Name = "Fabricante";
             // 
             // Fornecedor
             // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Fornecedor.DefaultCellStyle = dataGridViewCellStyle16;
             this.Fornecedor.HeaderText = "Fornecedor";
             this.Fornecedor.Name = "Fornecedor";
             // 
             // Quantidade
             // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle17;
             this.Quantidade.HeaderText = "Quantidade";
             this.Quantidade.Name = "Quantidade";
             // 
             // Preço
             // 
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Preço.DefaultCellStyle = dataGridViewCellStyle18;
             this.Preço.HeaderText = "Preço";
             this.Preço.Name = "Preço";
             // 
             // Part_Numb
             // 
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Part_Numb.DefaultCellStyle = dataGridViewCellStyle19;
             this.Part_Numb.HeaderText = "Part Number";
             this.Part_Numb.Name = "Part_Numb";
             // 
             // Code_HVEX
             // 
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Code_HVEX.DefaultCellStyle = dataGridViewCellStyle20;
             this.Code_HVEX.HeaderText = "Code HVEX";
             this.Code_HVEX.Name = "Code_HVEX";
             // 
@@ -212,6 +242,16 @@
             this.checkBox1.Text = "Produto HVEX";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(848, 320);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(132, 31);
+            this.button2.TabIndex = 130;
+            this.button2.Text = "Listar Itens";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button5
             // 
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
@@ -223,20 +263,11 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(848, 320);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 31);
-            this.button2.TabIndex = 130;
-            this.button2.Text = "Listar Itens";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Pesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(1040, 363);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button5);
@@ -244,6 +275,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pesquisa";
             this.Text = "Pesquisa";
             this.groupBox1.ResumeLayout(false);
@@ -264,6 +296,10 @@
         private System.Windows.Forms.TextBox codehvex;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
@@ -274,9 +310,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Preço;
         private System.Windows.Forms.DataGridViewTextBoxColumn Part_Numb;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code_HVEX;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
     }
 }
