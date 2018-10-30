@@ -2,13 +2,8 @@
 using Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using MongoDB.Driver;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace View
@@ -177,7 +172,7 @@ namespace View
         }
 
         
-
+//C:\Users\anaca\Documents\GitHub\Software-de-Estoque\estoque\View\MenuEstoque.cs
         
         private void textBox3_TextChanged_1(object sender, EventArgs e)
         {

@@ -3,12 +3,8 @@ using Model;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 
 
@@ -150,28 +146,32 @@ namespace View
         {
 
             int control = 0;
+            int cont = 0;
             for (int i = 0; i < produto.Count(); i++)
             {
+                
                 if (MongoConnection.QueryCollection("Estoques", Builders<Estoque>.Filter.Where(c => c.codHVEX.Equals(produto.ElementAt(i).codigo)), null).Count() > 0)
                 {
+
                     DataGridViewRow item = new DataGridViewRow();
                     item.CreateCells(dataGridView1);
                     dataGridView1.Rows.Add(item);
 
                     var a = MongoConnection.QueryCollection("Estoques", Builders<Estoque>.Filter.Where(c => c.codHVEX.Equals(produto.ElementAt(i).codigo)), null).First();
 
-                    dataGridView1.Rows[i].Cells[0].Value = produto.ElementAt(i).data; // Seta os valores da célula
-                    dataGridView1.Rows[i].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la*/
+                    dataGridView1.Rows[cont].Cells[0].Value = produto.ElementAt(i).data; // Seta os valores da célula
+                    dataGridView1.Rows[cont].Cells[0].ReadOnly = true; //Trava a célula para o usuário não poder modificá-la*/
 
-                    dataGridView1.Rows[i].Cells[1].Value = a.produto;
-                    dataGridView1.Rows[i].Cells[1].ReadOnly = true;
+                    dataGridView1.Rows[cont].Cells[1].Value = a.produto;
+                    dataGridView1.Rows[cont].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = Convert.ToString(produto.ElementAt(i).quantidade);
-                    dataGridView1.Rows[i].Cells[2].ReadOnly = true;
+                    dataGridView1.Rows[cont].Cells[2].Value = Convert.ToString(produto.ElementAt(i).quantidade);
+                    dataGridView1.Rows[cont].Cells[2].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[3].Value = produto.ElementAt(i).responsavel;
-                    dataGridView1.Rows[i].Cells[3].ReadOnly = true;
+                    dataGridView1.Rows[cont].Cells[3].Value = produto.ElementAt(i).responsavel;
+                    dataGridView1.Rows[cont].Cells[3].ReadOnly = true;
                     control++;
+                    cont++;
                 }
 
                 
