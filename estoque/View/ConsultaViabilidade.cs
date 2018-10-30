@@ -31,7 +31,7 @@ namespace View
             button2.Visible = false;
             button1.Visible = false;
             button5.Enabled = false;
-            button6.Visible = false;
+          //  button6.Visible = false;
         }
 
         public void gerarprodutoHVEX()
@@ -128,7 +128,7 @@ namespace View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button6.Visible = true;
+            //button6.Visible = true;
 
             if(verifica_mais_barato(lista_compra).Count() > 0)
             {
@@ -332,7 +332,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = menor_preco.ElementAt(i).preco;
+                    dataGridView1.Rows[i].Cells[2].Value = String.Concat("R$",menor_preco.ElementAt(i).preco);
                     dataGridView1.Rows[i].Cells[2].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
@@ -358,7 +358,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = menor_preco.ElementAt(i).preco;
+                    dataGridView1.Rows[i].Cells[2].Value = String.Concat("R$", menor_preco.ElementAt(i).preco);
                     dataGridView1.Rows[i].Cells[2].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
@@ -391,7 +391,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = aux.Preco;
+                    dataGridView1.Rows[i].Cells[2].Value = String.Concat("R$", aux.Preco);
                     dataGridView1.Rows[i].Cells[2].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[3].Value = aux.descricao;
@@ -414,7 +414,7 @@ namespace View
                     dataGridView1.Rows[i].Cells[1].Value = Convert.ToString(aux.quantidade);
                     dataGridView1.Rows[i].Cells[1].ReadOnly = true;
 
-                    dataGridView1.Rows[i].Cells[2].Value = aux.Preco;
+                    dataGridView1.Rows[i].Cells[2].Value = String.Concat("R$", aux.Preco);
                     dataGridView1.Rows[i].Cells[2].ReadOnly = true;
 
                     dataGridView1.Rows[i].Cells[3].Value = aux.descricao;

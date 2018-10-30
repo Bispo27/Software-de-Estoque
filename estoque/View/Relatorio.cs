@@ -130,16 +130,13 @@ namespace View
 
         public void clean()
         {
-            
             for(int j = 0; j < 4; j++)
             {
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
-
                     dataGridView1.Rows[i].Cells[j].Value = "";
                 }
             }
-            
         }
 
         public void Preenche_tabela_saida(List<RegistroSaida> produto, int quant)
