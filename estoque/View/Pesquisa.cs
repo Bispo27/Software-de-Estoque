@@ -10,7 +10,7 @@ namespace View
 {
     public partial class Pesquisa : Form
     {
-        bool controle = true;
+      //  bool controle = true;
         string Buscar = "";
         int cont = 1;
         public Pesquisa()
